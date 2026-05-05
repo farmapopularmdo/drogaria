@@ -1,291 +1,404 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farma Popular | Sua Saúde em Primeiro Lugar</title>
+    <title>Farma Popular | Entrega Grátis de Medicamentos no Morada do Ouro</title>
+    <meta name="description" content="Farmácia no Morada do Ouro com entrega grátis via WhatsApp. Medicamentos, perfumaria e atendimento farmacêutico com 30 anos de tradição.">
+    
+    <!-- Open Graph / SEO -->
+    <meta property="og:title" content="Farma Popular | Entrega Grátis">
+    <meta property="og:description" content="Peça os seus medicamentos pelo WhatsApp e receba em casa sem taxa de entrega. Atendimento no bairro Morada do Ouro.">
+    <meta property="og:type" content="website">
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Fonte Inter -->
+    
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Dados Estruturados (JSON-LD) para SEO Local -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Pharmacy",
+      "name": "Farma Popular Morada do Ouro",
+      "image": "https://i.postimg.cc/Kvvv0D5g/Etiqueta-selo-de-garantia-moderno-em-dourado-1-removebg-preview.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rua Principal",
+        "addressLocality": "Cuiabá",
+        "addressRegion": "MT",
+        "addressCountry": "BR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -15.568244,
+        "longitude": -56.067577
+      },
+      "url": "https://farmapopularcuiaba.com.br",
+      "telephone": "+556536442134",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "07:00",
+          "closes": "20:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "07:00",
+          "closes": "19:00"
+        }
+      ],
+      "priceRange": "$$"
+    }
+    </script>
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-
-        /* ==== CSS para reduzir imagens do carrossel ==== */
-        .carousel-inner img {
-            max-height: 300px; /* Altura máxima para telas grandes */
-            object-fit: cover; /* Mantém proporção e corta excesso */
-        }
-
-        /* Ajuste para celular (largura até 768px) */
-        @media (max-width: 768px) {
-            .carousel-inner img {
-                max-height: 200px; /* Reduz ainda mais no celular */
-            }
-        }
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         
-        /* Estilo para o botão flutuante */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-        }
-
-        /* Estilo para o botão sobre o carrossel (Botão centralizado - Padrão) */
-        .carousel-whatsapp-button {
-            position: absolute;
-            top: 70%; 
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 10;
-        }
-        
-        /* Estilo para o botão do PRIMEIRO ITEM (Canto Inferior Esquerdo) */
-        .carousel-whatsapp-button-first {
-            position: absolute;
-            bottom: 10%; 
-            left: 10%; 
-            z-index: 10;
-        }
-
-        /* Estilo para o botão do ÚLTIMO ITEM (Abaixado) */
-        .carousel-whatsapp-button-last {
-            position: absolute;
-            top: 80%; 
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 10;
-        }
-
-        /* ANIMAÇÃO GERAL DE PULSO/VIBRAÇÃO para CTAs */
-        .pulse-effect {
-            animation: pulse-effect 2s infinite;
-        }
-
-        @keyframes pulse-effect {
-            0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.5); } 
-            70% { box-shadow: 0 0 0 10px rgba(220, 38, 38, 0); }
+        /* Animação de Pulso */
+        .pulse-red { animation: pulse-red-animation 2s infinite; }
+        @keyframes pulse-red-animation {
+            0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(220, 38, 38, 0); }
             100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
         }
 
-        /* ANIMAÇÃO DE PULSO/VIBRAÇÃO para CTAs VERDES */
-        .pulse-green-effect {
-             animation: pulse-green 2s infinite;
-        }
-        
-        @keyframes pulse-green {
+        .pulse-green { animation: pulse-green-animation 2s infinite; }
+        @keyframes pulse-green-animation {
             0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
+            70% { box-shadow: 0 0 0 15px rgba(34, 197, 94, 0); }
             100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
         }
-    </style>
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        /* Animação do Letreiro (Marquee) */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .marquee-content {
+            display: flex;
+            width: max-content;
+            animation: marquee 25s linear infinite;
+        }
+
+        /* Padrão de fundo sutil para a seção principal */
+        .hero-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        @media (max-width: 640px) {
+            h1 { font-size: 2.25rem !important; line-height: 1.1 !important; }
+        }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-slate-50 text-slate-900">
+
+    <!-- BARRA DE ESTADO/URGÊNCIA COM LETREIRO CONTÍNUO -->
+    <div class="bg-slate-900 text-white py-2 z-[101] relative border-b border-white/10 overflow-hidden">
+        <div class="marquee-content whitespace-nowrap flex items-center gap-16">
+            <div class="flex items-center gap-16">
+                <span class="inline-flex items-center text-xs md:text-sm font-bold uppercase tracking-widest">
+                    <span class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+                    Aberto agora: atendimento rapido
+                </span>
+                <span class="inline-flex items-center text-xs md:text-sm font-bold uppercase tracking-widest">
+                    <span class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+                    Aberto agora: atendimento rapido
+                </span>
+                <span class="inline-flex items-center text-xs md:text-sm font-bold uppercase tracking-widest">
+                    <span class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+                    Aberto agora: atendimento rapido
+                </span>
+                <span class="inline-flex items-center text-xs md:text-sm font-bold uppercase tracking-widest">
+                    <span class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+                    Aberto agora: atendimento rapido
+                </span>
+            </div>
+            <div class="flex items-center gap-16">
+                <span class="inline-flex items-center text-xs md:text-sm font-bold uppercase tracking-widest">
+                    <span class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+                    Aberto agora: atendimento rapido
+                </span>
+                <span class="inline-flex items-center text-xs md:text-sm font-bold uppercase tracking-widest">
+                    <span class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+                    Aberto agora: atendimento rapido
+                </span>
+                <span class="inline-flex items-center text-xs md:text-sm font-bold uppercase tracking-widest">
+                    <span class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+                    Aberto agora: atendimento rapido
+                </span>
+                <span class="inline-flex items-center text-xs md:text-sm font-bold uppercase tracking-widest">
+                    <span class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+                    Aberto agora: atendimento rapido
+                </span>
+            </div>
+        </div>
+    </div>
 
     <!-- CABEÇALHO (HEADER) -->
-    <header class="bg-white shadow-md relative z-50 pt-4 pb-6">
-        <div class="container mx-auto px-4 flex justify-between items-center relative h-20">
-            <!-- 1. Logo (Esquerda) -->
+    <header class="bg-white/95 backdrop-blur-md sticky top-0 z-[100] border-b border-slate-200">
+        <div class="container mx-auto px-4 h-20 flex justify-between items-center">
             <div class="flex items-center">
-                <a href="#">
-                    <img src="https://play-lh.googleusercontent.com/AGwZt96E2A41tUYJcCBN2waem_JMjQIJCMaOBpri1n3oaJiyB13DIRLWo9nsNSnPoK4A" alt="Logo Farma Popular" class="w-20 md:w-32">
-                </a>
-            </div>
-
-            <!-- 2. Selo de Tradição (Centro) -->
-            <div class="flex justify-center flex-grow"> 
-                <img src="https://i.postimg.cc/Kvvv0D5g/Etiqueta-selo-de-garantia-moderno-em-dourado-1-removebg-preview.png" alt="Selo de 30 Anos de Tradição" class="w-16 md:w-36">
-            </div>
-
-            <!-- 3. Botão de Pedido (Direita) -->
-            <div class="relative inline-block text-left">
-                <button type="button" id="dropdownPedidoButton" class="inline-flex items-center bg-red-600 text-white font-bold py-1 px-2 md:py-2 md:px-4 rounded-full shadow-lg hover:bg-red-700 transition duration-300 pulse-effect text-sm md:text-base">
-                    <i class="bi bi-bicycle mr-1 md:mr-2"></i>Fazer Pedido
-                </button>
-
-                <!-- Dropdown do Botão -->
-                <div id="dropdownPedidoMenu" class="hidden absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50">
-                    <div class="py-1" role="menu">
-                        <a href="https://wa.me/5565992562056?text=Olá!%20Vi%20o%20anúncio%20no%20Google%20e%20gostaria%20de%20falar%20com%20um%20atendente%20da%20Farma%20Popular.%20Pode%20me%20ajudar?" target="_blank" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
-                            <i class="bi bi-whatsapp mr-2"></i>WhatsApp
-                        </a>
-                        <a href="tel:+556536442134" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
-                            <i class="bi bi-telephone-fill mr-2"></i>Ligar
-                        </a>
-                    </div>
+                <div class="flex items-center">
+                    <img src="https://i.postimg.cc/Kvvv0D5g/Etiqueta-selo-de-garantia-moderno-em-dourado-1-removebg-preview.png" alt="Selo 30 Anos de Tradição" class="h-14 md:h-20 object-contain">
                 </div>
+            </div>
+
+            <div class="flex items-center gap-3 md:gap-6">
+                <!-- Link Telefone Header - Protocolo tel: direto -->
+                <a href="tel:+556536442134" class="hidden sm:flex items-center text-slate-700 font-bold hover:text-red-600 transition">
+                    <i class="bi bi-telephone-fill mr-2 text-red-600"></i> (65) 3644-2134
+                </a>
+                <a href="https://wa.me/5565992562056?text=Olá,%20vim%20do%20Google%20e%20gostaria%20de%20atendimento!" target="_blank" class="bg-green-600 hover:bg-green-700 text-white px-5 py-2.5 rounded-full font-bold flex items-center shadow-lg transition transform hover:scale-105">
+                    <i class="bi bi-whatsapp mr-2 text-lg"></i> <span class="hidden md:inline">Pedir no WhatsApp</span><span class="md:hidden">Pedir</span>
+                </a>
             </div>
         </div>
     </header>
 
-    <!-- Carrossel -->
-    <div id="carouselExampleAutoplaying" class="carousel slide relative" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            
-            <!-- ITEM 1 -->
-            <div class="carousel-item active">
-                <img src="https://i.postimg.cc/ncDZRSDr/Orange-and-Black-Clean-and-Simple-Online-Booking-Site-Facebook-Cover-6.png" class="d-block w-100" alt="Promoção 1">
-                <a href="https://wa.me/5565992562056?text=Olá!%20Vi%20o%20anúncio%20no%20Google%20e%20gostaria%20de%20falar%20com%20um%20atendente%20da%20Farma%20Popular.%20Pode%20me%20ajudar?" target="_blank" class="carousel-whatsapp-button-first bg-green-500 text-white font-bold py-1 px-2 md:py-1.5 md:px-3 rounded-full shadow-2xl hover:bg-green-600 transition duration-300 flex items-center justify-center text-xs md:text-base pulse-green-effect">
-                    <i class="bi bi-whatsapp mr-1 md:mr-1.5 text-sm md:text-lg"></i>Pedir no Whatsapp
-                </a>
-            </div>
-            
-            <!-- ITEM 2 -->
-            <div class="carousel-item">
-                <img src="https://i.postimg.cc/NFnmjRrY/Orange-and-Black-Clean-and-Simple-Online-Booking-Site-Facebook-Cover-2.png" class="d-block w-100" alt="Promoção 2">
-                <a href="https://wa.me/5565992562056?text=Olá!%20Vi%20o%20anúncio%20no%20Google%20e%20gostaria%20de%20falar%20com%20um%20atendente%20da%20Farma%20Popular.%20Pode%20me%20ajudar?" target="_blank" class="carousel-whatsapp-button bg-green-500 text-white font-bold py-1 px-2 md:py-1.5 md:px-3 rounded-full shadow-2xl hover:bg-green-600 transition duration-300 flex items-center justify-center text-xs md:text-base pulse-green-effect">
-                    <i class="bi bi-whatsapp mr-1 md:mr-1.5 text-sm md:text-lg"></i>Pedir no Whatsapp
-                </a>
-            </div>
-            
-            <!-- ITEM 3 -->
-            <div class="carousel-item">
-                <img src="https://i.postimg.cc/WzhyfLR8/Orange-and-Black-Clean-and-Simple-Online-Booking-Site-Facebook-Cover-5.png" class="d-block w-100" alt="Promoção 3">
-                <a href="https://wa.me/5565992562056?text=Olá!%20Vi%20o%20anúncio%20no%20Google%20e%20gostaria%20de%20falar%20com%20um%20atendente%20da%20Farma%20Popular.%20Pode%20me%20ajudar?" target="_blank" class="carousel-whatsapp-button-last bg-green-500 text-white font-bold py-1 px-2 md:py-1.5 md:px-3 rounded-full shadow-2xl hover:bg-green-600 transition duration-300 flex items-center justify-center text-xs md:text-base pulse-green-effect">
-                    <i class="bi bi-whatsapp mr-1 md:mr-1.5 text-sm md:text-lg"></i>Pedir no Whatsapp
-                </a>
-            </div>
-        </div>
-        
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Anterior</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Próximo</span>
-        </button>
-    </div>
+    <!-- PRIMEIRA DOBRA (HERO) -->
+    <section class="relative bg-gradient-to-br from-red-600 via-red-700 to-red-800 pt-4 pb-24 overflow-hidden hero-pattern">
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-black/10 rounded-full blur-3xl"></div>
 
-    <!-- Hero -->
-    <main class="bg-white py-16 md:py-24">
-        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
-            <div class="md:w-1/2 text-center md:text-left mb-8 md:mb-0">
-                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-4">
-                    Farma Popular: Seu medicamento entregue na sua porta.
-                </h1>
-                <p class="text-lg text-gray-600 mb-6">
-                    Peça seus medicamentos e produtos de higiene com comodidade e receba em casa com rapidez e segurança.
-                </p>
-                <a href="https://wa.me/5565992562056?text=Olá!%20Vi%20o%20anúncio%20no%20Google%20e%20gostaria%20de%20falar%20com%20um%20atendente%20da%20Farma%20Popular.%20Pode%20me%20ajudar?" target="_blank" class="bg-red-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-red-700 transition duration-300 flex items-center justify-center pulse-effect">
-                    <i class="bi bi-bicycle mr-2"></i>Peça já
-                </a>
-            </div>
-            <div class="md:w-1/2">
-                <img src="https://i.postimg.cc/tC02CkPy/Chat-GPT-Image-19-de-ago-de-2025-13-59-07.png" alt="Drogaria Farma Popular" class="rounded-lg shadow-xl w-full">
-            </div>
-        </div>
-    </main>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-6 lg:gap-12">
+                <div class="w-full lg:w-3/5 text-center lg:text-left">
+                    
+                    <!-- Imagem Promocional -->
+                    <div class="mb-2 flex justify-center lg:justify-start">
+                        <img src="https://i.postimg.cc/g0JxHbzk/image.png" alt="Promoção Farma Popular" class="h-40 md:h-56 lg:h-72 object-contain rounded-2xl drop-shadow-2xl brightness-105 transform hover:scale-105 transition duration-300">
+                    </div>
 
-    <!-- Nossos Destaques -->
-    <section class="py-12 bg-gray-100">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold text-gray-900 mb-8">Nossos Destaques</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
-                    <div class="w-16 h-16 mx-auto mb-4 bg-red-100 rounded-full flex items-center justify-center">
-                        <i class="bi bi-capsule text-red-600 text-3xl"></i>
+                    <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight drop-shadow-md">
+                        Farmácia com <span class="text-amber-300 uppercase tracking-tight italic">Entrega Grátis</span> 
+                        <span class="block text-sm md:text-base text-white/50 font-normal italic mt-1">(consulte condições)</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-red-50 mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-medium">
+                        Peça os seus medicamentos pelo WhatsApp e receba em casa com agilidade e o <span class="text-white border-b-2 border-amber-300/30">melhor atendimento</span> da região.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
+                        <a href="https://wa.me/5565992562056?text=Olá,%20vim%20do%20Google%20e%20gostaria%20de%20atendimento!" target="_blank" class="w-full sm:w-auto bg-green-500 hover:bg-green-600 text-white text-xl font-extrabold py-5 px-10 rounded-2xl shadow-2xl transition-all pulse-green flex items-center justify-center gap-3 border-b-4 border-green-700 active:translate-y-1">
+                            <i class="bi bi-whatsapp"></i> PEDIR PELO WHATSAPP
+                        </a>
+                        <!-- Link Telefone Hero - Discagem Direta -->
+                        <a href="tel:+556536442134" class="w-full sm:w-auto bg-white hover:bg-slate-100 text-red-700 text-lg font-bold py-5 px-8 rounded-2xl flex items-center justify-center gap-3 transition shadow-xl">
+                            <i class="bi bi-telephone"></i> LIGAR AGORA
+                        </a>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 text-red-600">Medicamentos</h3>
-                    <p class="text-gray-600">Ampla variedade de medicamentos com os melhores preços.</p>
+
+                    <!-- Provas de Confiança -->
+                    <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 border-t pt-8 border-white/20">
+                        <div class="flex flex-col items-center lg:items-start text-white">
+                            <span class="text-amber-300 font-extrabold text-lg italic">Entrega Rápida</span>
+                            <span class="text-xs text-white/70 uppercase font-bold tracking-wider">Toda a Região</span>
+                        </div>
+                        <div class="flex flex-col items-center lg:items-start text-white">
+                            <span class="font-extrabold text-lg italic">+30 Anos</span>
+                            <span class="text-xs text-white/70 uppercase font-bold tracking-wider">De Tradição Local</span>
+                        </div>
+                        <div class="flex flex-col items-center lg:items-start text-white">
+                            <span class="font-extrabold text-lg italic">Atendimento</span>
+                            <span class="text-xs text-green-300 uppercase font-bold tracking-wider animate-pulse">Humano e Especializado</span>
+                        </div>
+                        <div class="flex flex-col items-center lg:items-start text-white">
+                            <span class="font-extrabold text-lg italic">Nota 4.8</span>
+                            <span class="text-xs text-white/70 uppercase font-bold tracking-wider">No Google Maps</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
-                    <div class="w-16 h-16 mx-auto mb-4 bg-blue-100 rounded-full flex items-center justify-center">
-                        <i class="bi bi-plus text-blue-600 text-3xl"></i>
+
+                <div class="w-full lg:w-2/5 relative">
+                    <div class="absolute inset-0 bg-amber-400 rounded-3xl rotate-3 scale-95 opacity-20 blur-sm"></div>
+                    <div class="relative p-2 bg-white/10 backdrop-blur-sm rounded-[2rem] border border-white/20 shadow-2xl">
+                        <img src="https://i.postimg.cc/tC02CkPy/Chat-GPT-Image-19-de-ago-de-2025-13-59-07.png" alt="Drogaria Farma Popular" class="rounded-[1.5rem] w-full object-cover shadow-inner">
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 text-red-600">Cosméticos e Higiene</h3>
-                    <p class="text-gray-600">Produtos de beleza e higiene das melhores marcas.</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300">
-                    <div class="w-16 h-16 mx-auto mb-4 bg-green-100 rounded-full flex items-center justify-center">
-                        <i class="bi bi-heart-pulse text-green-600 text-3xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2 text-red-600">Serviços Farmacêuticos</h3>
-                    <p class="text-gray-600">Aferição de pressão, aplicação de injetáveis e muito mais.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contato -->
-    <section class="py-12">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold text-gray-900 mb-4">Entre em Contato</h2>
-            <p class="text-lg text-gray-600 mb-6">Estamos prontos para te atender. Visite nossa loja ou ligue para nós!</p>
-            <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8">
-                <a href="tel:+556536442134" class="bg-blue-500 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-blue-700 transition duration-300 flex items-center justify-center pulse-effect w-full md:w-auto">
-                    <i class="bi bi-telephone-fill mr-2"></i>(65) 3644-2134
-                </a>
-                <a href="tel:+5565992562056" class="bg-yellow-500 text-gray-800 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-yellow-600 transition duration-300 flex items-center justify-center pulse-effect w-full md:w-auto">
-                    <i class="bi bi-phone-fill mr-2"></i>(65) 99256-2056
-                </a>
-                <a href="https://wa.me/5565992562056?text=Olá!%20Vi%20o%20anúncio%20no%20Google%20e%20gostaria%20de%20falar%20com%20um%20atendente%20da%20Farma%20Popular.%20Pode%20me%20ajudar?" target="_blank" class="bg-green-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-green-700 transition duration-300 flex items-center justify-center pulse-effect w-full md:w-auto">
-                    <i class="bi bi-whatsapp mr-2"></i>Fale Conosco no WhatsApp
-                </a>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Mapa -->
-    <section class="py-12 bg-gray-100">
+    <!-- GUIA RÁPIDO DE PEDIDO -->
+    <section class="py-20 bg-slate-50 border-y border-slate-200">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Nossa Localização</h2>
-            <div class="relative w-full h-64 md:h-80 rounded-lg overflow-hidden shadow-lg">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3843.437730601444!2d-56.067577724084884!3d-15.568244417428682!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x939db0fc6ea8dd7f%3A0x9439b52cca784054!2sFarma%20Popular%20Morada%20do%20Ouro!5e0!3m2!1spt-BR!2sbr!4v1755268537558!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4 italic uppercase tracking-tight">O remédio acabou? <span class="text-red-600 italic">É fácil pedir.</span></h2>
+                <p class="text-lg text-slate-500 font-medium italic">Receba o que precisa em 3 passos simples.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="relative">
+                    <div class="w-20 h-20 bg-red-600 text-white rounded-[2rem] flex items-center justify-center text-3xl font-black mx-auto mb-6 shadow-xl border-b-4 border-red-800">1</div>
+                    <h4 class="text-xl font-bold mb-3 italic">Chame no WhatsApp</h4>
+                    <p class="text-slate-600 text-sm">Clique no botão e envie uma mensagem. Atendimento humano e rápido.</p>
+                </div>
+                <div class="relative">
+                    <div class="w-20 h-20 bg-slate-900 text-white rounded-[2rem] flex items-center justify-center text-3xl font-black mx-auto mb-6 shadow-xl border-b-4 border-slate-700">2</div>
+                    <h4 class="text-xl font-bold mb-3 italic">Envie o seu Pedido</h4>
+                    <p class="text-slate-600 text-sm">Mande a lista ou foto da receita. Conferimos os itens para você.</p>
+                </div>
+                <div>
+                    <div class="w-20 h-20 bg-green-600 text-white rounded-[2rem] flex items-center justify-center text-3xl font-black mx-auto mb-6 shadow-xl border-b-4 border-green-800">3</div>
+                    <h4 class="text-xl font-bold mb-3 italic">Receba em Casa</h4>
+                    <p class="text-slate-600 text-sm">Entrega ágil à sua porta. Pagamento seguro no ato da entrega.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Rodapé -->
-    <footer class="bg-gray-800 text-gray-300 py-8">
-        <div class="container mx-auto px-4 text-center">
-            <div class="flex justify-center items-center space-x-6 mb-6">
-                <div class="flex items-center space-x-2 text-green-400">
-                    <i class="bi bi-shield-lock-fill text-2xl"></i>
-                    <span class="text-sm font-semibold uppercase">Compra 100% Segura</span>
+    <!-- CATEGORIAS E HORÁRIOS -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 italic leading-tight uppercase tracking-tighter">Atendimento Profissional <br><span class="text-red-600">Sua saúde em primeiro lugar.</span></h2>
+                    
+                    <div class="space-y-6">
+                        <div class="flex gap-5 group">
+                            <div class="flex-shrink-0 w-14 h-14 bg-red-100 text-red-600 rounded-2xl flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition-all shadow-sm"><i class="bi bi-capsule-pill text-2xl"></i></div>
+                            <div>
+                                <h4 class="font-extrabold text-lg italic">Medicamentos com Procedência</h4>
+                                <p class="text-slate-500 text-sm">Linha completa de Éticos, Genéricos e Similares com os melhores descontos.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-5 group">
+                            <div class="flex-shrink-0 w-14 h-14 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all shadow-sm"><i class="bi bi-stars text-2xl"></i></div>
+                            <div>
+                                <h4 class="font-extrabold text-lg italic">Perfumaria e Cuidados</h4>
+                                <p class="text-slate-500 text-sm">Itens de higiene e cosméticos para o seu bem-estar diário.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-5 group">
+                            <div class="flex-shrink-0 w-14 h-14 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center group-hover:bg-green-600 group-hover:text-white transition-all shadow-sm"><i class="bi bi-heart-pulse text-2xl"></i></div>
+                            <div>
+                                <h4 class="font-extrabold text-lg italic">Serviços Farmacêuticos</h4>
+                                <p class="text-slate-500 text-sm">Aferição de pressão e glicemia com profissionais qualificados.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="flex items-center space-x-2 text-blue-400">
-                    <i class="bi bi-patch-check-fill text-2xl"></i>
-                    <span class="text-sm font-semibold uppercase">Certificado e Autorizado</span>
+
+                <div class="bg-slate-50 p-8 md:p-12 rounded-[2.5rem] shadow-2xl border border-slate-200">
+                    <h3 class="text-2xl font-black mb-6 italic uppercase text-slate-800 tracking-tight">Horários de Atendimento</h3>
+                    <ul class="space-y-4">
+                        <li class="flex justify-between border-b border-slate-200 pb-2">
+                            <span class="font-bold text-slate-500 italic text-sm">Segunda a Sexta</span>
+                            <span class="font-black text-slate-900">07:00 às 20:00</span>
+                        </li>
+                        <li class="flex justify-between border-b border-slate-200 pb-2">
+                            <span class="font-bold text-slate-500 italic text-sm">Sábado</span>
+                            <span class="font-black text-slate-900">07:00 às 19:00</span>
+                        </li>
+                    </ul>
+                    <div class="mt-10 bg-white p-6 rounded-3xl border border-slate-200 shadow-sm italic">
+                        <p class="text-slate-600 text-sm font-medium">"São 30 anos de história no Morada do Ouro, servindo nossos clientes com o carinho e o respeito que você merece."</p>
+                        <p class="mt-4 font-black text-red-600 text-xs uppercase tracking-widest">— Farma Popular Morada do Ouro</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCALIZAÇÃO -->
+    <section class="py-20 bg-slate-50">
+        <div class="container mx-auto px-4 text-center md:text-left">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-12 gap-8">
+                <div>
+                    <h2 class="text-3xl font-black text-slate-900 italic mb-4 uppercase tracking-tighter">Nossa Localização</h2>
+                    <p class="text-lg text-slate-600 font-medium italic">Visite a nossa loja física ou peça delivery.</p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+                    <a href="https://maps.app.goo.gl/9439b52cca784054" target="_blank" class="bg-slate-900 text-white px-8 py-4 rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-slate-800 transition shadow-xl">
+                        <i class="bi bi-geo-alt"></i> TRAÇAR ROTA
+                    </a>
+                    <a href="https://wa.me/5565992562056?text=Olá,%20vim%20do%20Google%20e%20gostaria%20de%20atendimento!" target="_blank" class="bg-green-600 text-white px-8 py-4 rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-green-700 transition shadow-xl">
+                        <i class="bi bi-whatsapp"></i> FALAR NO WHATSAPP
+                    </a>
                 </div>
             </div>
             
-            <p class="text-sm">&copy; 2024 Farma Popular Morada do Ouro. Todos os direitos reservados.</p>
-            <p class="text-xs text-gray-500 mt-1">Desenvolvido por Felippe Leão</p>
+            <div class="bg-white p-4 rounded-[2.5rem] shadow-2xl border border-slate-200 h-[450px] overflow-hidden">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3843.437730601444!2d-56.067577724084884!3d-15.568244417428682!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x939db0fc6ea8dd7f%3A0x9439b52cca784054!2sFarma%20Popular%20Morada%20do%20Ouro!5e0!3m2!1spt-BR!2sbr!4v1755268537558!5m2!1spt-BR!2sbr" 
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" class="rounded-[2rem]"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer class="bg-slate-900 text-white pt-20 pb-28 md:pb-12 border-t border-white/5">
+        <div class="container mx-auto px-4 text-center md:text-left">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div>
+                    <img src="https://i.postimg.cc/Kvvv0D5g/Etiqueta-selo-de-garantia-moderno-em-dourado-1-removebg-preview.png" alt="Farma Popular" class="h-16 mb-8 mx-auto md:mx-0">
+                    <p class="text-slate-400 text-sm italic font-medium">30 anos de compromisso com a saúde no Morada do Ouro.</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-black text-sm mb-6 uppercase tracking-widest text-red-500">Navegação</h4>
+                    <ul class="space-y-3 text-slate-400 font-bold text-sm">
+                        <li><a href="#" class="hover:text-white transition">Página Inicial</a></li>
+                        <li><a href="#" class="hover:text-white transition">Ofertas</a></li>
+                        <li><a href="#" class="hover:text-white transition">Localização</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-black text-sm mb-6 uppercase tracking-widest text-red-500">Contato</h4>
+                    <ul class="space-y-3 text-slate-400 font-bold text-sm">
+                        <li class="flex items-center justify-center md:justify-start gap-3"><i class="bi bi-geo-alt-fill text-red-600"></i> Morada do Ouro</li>
+                        <!-- Link Telefone Rodapé - Discagem Direta Corrigida -->
+                        <li class="flex items-center justify-center md:justify-start gap-3 hover:text-red-500 transition">
+                            <a href="tel:+556536442134" class="flex items-center gap-3">
+                                <i class="bi bi-telephone-fill text-red-600"></i> (65) 3644-2134
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-black text-sm mb-6 uppercase tracking-widest text-red-500">Segurança</h4>
+                    <div class="flex flex-col gap-4 max-w-[200px] mx-auto md:mx-0">
+                        <div class="flex items-center gap-3 bg-white/5 p-3 rounded-2xl border border-white/10 italic">
+                            <i class="bi bi-shield-lock text-green-400 text-xl"></i>
+                            <span class="text-[10px] font-black uppercase leading-tight">Site 100%<br>Seguro</span>
+                        </div>
+                        <div class="flex items-center gap-3 bg-white/5 p-3 rounded-2xl border border-white/10 italic">
+                            <i class="bi bi-patch-check text-blue-400 text-xl"></i>
+                            <span class="text-[10px] font-black uppercase leading-tight">Certificado<br>Anvisa</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-white/10 text-center text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">
+                <p>&copy; 2024 Farma Popular Morada do Ouro. Todos os direitos reservados. | Desenvolvido por Felippe Leão</p>
+            </div>
         </div>
     </footer>
-    
-    <!-- Botão Flutuante do WhatsApp -->
-    <a href="https://wa.me/5565992562056?text=Olá!%20Vi%20o%20anúncio%20no%20Google%20e%20gostaria%20de%20falar%20com%20um%20atendente%20da%20Farma%20Popular.%20Pode%20me%20ajudar?" target="_blank" class="whatsapp-float bg-green-500 text-white rounded-full p-4 shadow-lg hover:bg-green-600 transition duration-300 pulse-green-effect">
+
+    <!-- BOTÕES DE ACÇÃO RÁPIDA (MOBILE) -->
+    <div class="md:hidden fixed bottom-6 left-4 right-4 z-[1000] flex gap-3">
+        <!-- Botão Ligar Mobile - Discagem Direta -->
+        <a href="tel:+556536442134" class="flex-1 bg-white text-red-700 font-black py-4 rounded-2xl flex items-center justify-center gap-2 shadow-2xl border-b-4 border-slate-300">
+            <i class="bi bi-telephone-fill"></i> LIGAR
+        </a>
+        <a href="https://wa.me/5565992562056?text=Olá,%20vim%20do%20Google%20e%20gostaria%20de%20atendimento!" class="flex-[2] bg-green-500 text-white font-black py-4 rounded-2xl flex items-center justify-center gap-2 shadow-2xl pulse-green border-b-4 border-green-700">
+            <i class="bi bi-whatsapp text-lg"></i> WHATSAPP
+        </a>
+    </div>
+
+    <!-- BOTÃO WHATSAPP DESKTOP -->
+    <a href="https://wa.me/5565992562056?text=Olá,%20vim%20do%20Google%20e%20gostaria%20de%20atendimento!" target="_blank" class="hidden md:flex fixed bottom-8 right-8 z-[999] bg-green-500 text-white w-20 h-20 rounded-[2rem] shadow-2xl items-center justify-center hover:bg-green-600 transition hover:scale-110 pulse-green border-b-4 border-green-700">
         <i class="bi bi-whatsapp text-4xl"></i>
     </a>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const button = document.getElementById('dropdownPedidoButton');
-            const menu = document.getElementById('dropdownPedidoMenu');
-
-            button.addEventListener('click', function() {
-                menu.classList.toggle('hidden');
-            });
-
-            document.addEventListener('click', (event) => {
-                if (!button.contains(event.target) && !menu.contains(event.target)) {
-                    menu.classList.add('hidden');
-                }
-            });
-        });
-    </script>
 </body>
 </html>
-
